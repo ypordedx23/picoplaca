@@ -1,0 +1,27 @@
+<html>
+
+<head>
+  <title>"Pico y Placa" predictor</title>
+</head>
+
+<body>
+  <h1>"Pico y Placa" predictor</h1>
+  <form method=post>
+    <p>Placa: <input type="text" name="licencePlate" required /></p>
+    <p>Fecha: <input type="text" name="date" required /></p>
+    <p>Hora: <input type="time" name="time" required /></p>
+    <p><input type="submit" value="Verificar" /></p>
+  </form>
+
+
+
+  {% if extracted_text %}
+  <h1>Resultado:</h1>
+  <p> La placa de la imagen cargada es: <b> {{ extracted_text }} </b></p>
+
+  {% else %}
+  
+  {% endif %}
+</body>
+
+</html>
