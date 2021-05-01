@@ -77,3 +77,4 @@ def day_of_week(date):
         6:'Domingo'
     }
     return day_of_week_switcher.get(date,"")
+

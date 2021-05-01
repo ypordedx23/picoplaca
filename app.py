@@ -1,5 +1,7 @@
 from flask import Flask,render_template,request
- 
+import core.validator as validator
+from model.LicenceRequest import LicenceRequest
+
 app = Flask(__name__,template_folder='template')
 
 
@@ -8,10 +10,11 @@ app = Flask(__name__,template_folder='template')
 def validate_licence_plate():
     if request.method == 'POST':
         form_data = request.form
-        if not form_data.get("licencePlate"):
-            return render_template('index.html', msg='No has ingresado ninguna placa')
+        licenceRequest = LicenceRequest(form_data.get("licencePlate"), form_data.get("date"), form_data.get("time"))
+        result = validator.can_be_on_the_road(licenceRequest)
+        return render_template('validator.html',show_result_modal = True, msg=result)
     elif request.method == 'GET':
-        return render_template('index.html')
+        return render_template('validator.html')
     else:
         return 'OK'
 
@@ -23,4 +26,5 @@ if __name__ == '__main__':
     app.config['ENV'] = 'development'
     app.config['DEBUG'] = True
     app.config['TESTING'] = True
+    app.static_folder = 'static'
     app.run()
