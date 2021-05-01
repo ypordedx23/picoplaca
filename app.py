@@ -3,11 +3,12 @@ import core.validator as validator
 from model.LicenceRequest import LicenceRequest
 
 app = Flask(__name__,template_folder='template')
+ 
+app.run(host='localhost', port=5000)
 
-
-
+#Metodo que obtiene el request del cliente
 @app.route('/', methods=['GET', 'POST'])
-def validate_licence_plate():
+def pico_placa_predictor():
     if request.method == 'POST':
         form_data = request.form
         licenceRequest = LicenceRequest(form_data.get("licencePlate"), form_data.get("date"), form_data.get("time"))
@@ -18,8 +19,6 @@ def validate_licence_plate():
     else:
         return 'OK'
 
- 
-app.run(host='localhost', port=5000)
 
 
 if __name__ == '__main__':
