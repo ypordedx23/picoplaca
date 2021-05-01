@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='validator.css') }}" />
+</head>
+
+<body>
+    <h2>Pico y Placa PREDICTOR</h2>
+    <div class="container" id="container">
+        <div class="form-container presentation-container">
+            <form method=post>
+                <h2>Ten un Buen día</h2>
+            </form>
+        </div>
+        <div class="form-container licence-container">
+            <form method=post>
+                <h1>Ingresa tu placa</h1>
+                <p>Placa: <input type="text" name="licencePlate" placeholder="XXX#### / XXX###" required /></p>
+                <p>Fecha: <input type="text" name="date" placeholder="YYYY-MM-DD" required /></p>
+                <p>Hora: <input type="time" name="time" required /></p>
+                <p><button type="submit" value="Verificar">Verificar</button></p>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Yury Romero!</h1>
+                    <p>Gracias por el reto</p>
+                    <button class="ghost volver" id="volver">Regresar</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Puedo Circular?</h1>
+                    {% if msg %}
+                    <p>{{msg}}</p>
+                    {% else %}
+                    <p>Consulta si tu vehiculo Circula</p>
+                    {% endif %}
+                    <button class="ghost autor" id="autor">Autor</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="static/validator.js"></script>
+</body>
+
+</html>
