@@ -4,7 +4,7 @@ from model.LicenceRequest import LicenceRequest
 
 app = Flask(__name__,template_folder='template')
  
-app.run(host='localhost', port=5000)
+
 
 #Metodo que obtiene el request del cliente
 @app.route('/', methods=['GET', 'POST'])
@@ -19,7 +19,7 @@ def pico_placa_predictor():
     else:
         return 'OK'
 
-
+app.run(host='localhost', port=5000)
 
 if __name__ == '__main__':
     app.config['ENV'] = 'development'
